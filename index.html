@@ -4,10 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {
-    height: 120vh; /* Set the body height to be larger than the viewport to enable scrolling */
+    height: 120vh;
     margin: 0;
     background-color: #f0f0f0;
-    overflow: auto; /* Enable scrolling */
+    overflow: auto;
   }
   .whitecenter {
     text-align: center;
@@ -24,15 +24,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Text color */
-    font-size: 30px; /* Text size */
+    color: white;
+    font-size: 30px;
   }
   .squareInfo {
     height: 200px;
     width: 98.5%;
     background-color: #000000;
-    color: white; /* Text color */
-    font-size: 40px; /* Text size */
+    color: white;
+    font-size: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,59 +48,63 @@
     max-height: 200px;
   }
 </style>
+<script src="config.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.square').textContent = config.portfolioTitle;
+
+    document.querySelector('.whitecenter').textContent = config.aboutMe.heading;
+    document.querySelector('.whitecenterSMALL').textContent = config.aboutMe.description;
+
+    document.querySelector('.squareInfo div').textContent = config.pastWork.heading;
+
+    const videoContainer = document.querySelector('.videos');
+    config.pastWork.videos.forEach(video => {
+      const videoElement = document.createElement('video');
+      videoElement.controls = true;
+      const sourceElement = document.createElement('source');
+      sourceElement.src = video.src;
+      sourceElement.type = video.type;
+      videoElement.appendChild(sourceElement);
+      videoElement.appendChild(document.createTextNode('Your browser does not support HTML video.'));
+      videoContainer.appendChild(videoElement);
+    });
+
+    const pricingContainer = document.querySelector('.whitecenterSMALL:nth-of-type(2)');
+    config.pricing.details.forEach(detail => {
+      const pElement = document.createElement('p');
+      pElement.innerHTML = `${detail.description} <b>${detail.price}</b>`;
+      pricingContainer.appendChild(pElement);
+    });
+
+    const contactContainer = document.querySelectorAll('.squareInfo')[1];
+    config.contacts.forEach(contact => {
+      const aElement = document.createElement('a');
+      aElement.href = contact.href;
+      const imgElement = document.createElement('img');
+      imgElement.src = contact.imgSrc;
+      imgElement.alt = contact.alt;
+      imgElement.style = 'width:150px; height:150px; padding-top: 40px;';
+      aElement.appendChild(imgElement);
+      contactContainer.appendChild(aElement);
+    });
+  });
+</script>
 </head>
 <body>
-<div class="square">Eswancoders Portfolio</div>
+<div class="square"></div>
 
-<div class="whitecenter" style="padding-top: 15px;">About Me</div>
-<div class="whitecenterSMALL" style="padding-top: 20px; padding-left: 40px; padding-right: 40px; padding-bottom: 30px;">
-  Hello! I am a Roblox scripter. I have been programming for 6 years. I have been learning LUA for the past 2 years. I love seeing how things work and am always open to crazy ideas. Below is some of my past work, it is old and I am updating it whenever I have time. Thank you for thinking about choosing me!
-</div>
+<div class="whitecenter" style="padding-top: 15px;"></div>
+<div class="whitecenterSMALL" style="padding-top: 20px; padding-left: 40px; padding-right: 40px; padding-bottom: 30px;"></div>
 
 <div class="squareInfo">
-  <div>Past Work</div>
-  <div class="videos">
-    <video controls>
-      <source src="v1.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-    <video controls>
-      <source src="v2.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-    <video controls>
-      <source src="v3.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-    <video controls>
-      <source src="v4.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-    <video controls>
-      <source src="v5.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-  </div>
+  <div></div>
+  <div class="videos"></div>
 </div>
 
-<div class="whitecenter" style="padding-top: 20px; padding-bottom: 15px;">Pricing</div>
-<div class="whitecenterSMALL" style="padding-bottom: 25px;">Small commissions: Simple mechanics/game systems like tools, round system, datastores, etc.  <b>100-750</b>
-  <br>
-  <br>
-  Medium commissions: More complex version of small commissions. Larger games, mechanics, etc.  <b>150-1200</b>
-  <br>
-  <br>
-  Large commissions: Whole games, complex mechanics, anything everyone knows it's hard to do.  <b>1200-2000</b>
-</div>
-<div class="squareInfo">Contacts
-  <a href="https://www.roblox.com/users/2713185027/profile">
-    <img src="https://i.imgur.com/sKtxGz4.png" alt="Roblox profile" style="width:150px; height:150px;">
- </a>
- <a href="https://discord.com/channels/@me">
-  <img src="https://i.imgur.com/JOyLkB0.png" alt="discord: eswd" style="width:150px; height:150px; padding-top: 40px;">
-</a>
-</div>
-
+<div class="whitecenter" style="padding-top: 20px; padding-bottom: 15px;"></div>
+<div class="whitecenterSMALL" style="padding-bottom: 25px;"></div>
+<div class="squareInfo"></div>
 
 <div class="squareInfo"></div>
 </body>
