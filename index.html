@@ -4,10 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {
-    height: 120vh;
+    height: 120vh; /* Set the body height to be larger than the viewport to enable scrolling */
     margin: 0;
     background-color: #f0f0f0;
-    overflow: auto;
+    overflow: auto; /* Enable scrolling */
   }
   .whitecenter {
     text-align: center;
@@ -24,15 +24,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 30px;
+    color: white; /* Text color */
+    font-size: 30px; /* Text size */
   }
   .squareInfo {
     height: 200px;
     width: 98.5%;
     background-color: #000000;
-    color: white;
-    font-size: 40px;
+    color: white; /* Text color */
+    font-size: 40px; /* Text size */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,9 +54,9 @@
     document.querySelector('.square').textContent = config.portfolioTitle;
 
     document.querySelector('.whitecenter').textContent = config.aboutMe.heading;
-    document.querySelector('.whitecenterSMALL').textContent = config.aboutMe.description;
+    document.querySelector('.whitecenterSMALL').innerHTML = config.aboutMe.description;
 
-    document.querySelector('.squareInfo div').textContent = config.pastWork.heading;
+    document.querySelector('.squareInfo > div').textContent = config.pastWork.heading;
 
     const videoContainer = document.querySelector('.videos');
     config.pastWork.videos.forEach(video => {
@@ -70,7 +70,7 @@
       videoContainer.appendChild(videoElement);
     });
 
-    const pricingContainer = document.querySelector('.whitecenterSMALL:nth-of-type(2)');
+    const pricingContainer = document.querySelectorAll('.whitecenterSMALL')[1];
     config.pricing.details.forEach(detail => {
       const pElement = document.createElement('p');
       pElement.innerHTML = `${detail.description} <b>${detail.price}</b>`;
