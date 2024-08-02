@@ -10,7 +10,6 @@ const config = {
     videos: [
       { src: "v1.mp4", type: "video/mp4" },
       { src: "v2.mp4", type: "video/mp4" },
-      { src: "v3.mp4", type: "video/mp4" },
       { src: "v4.mp4", type: "video/mp4" },
       { src: "v5.mp4", type: "video/mp4" }
     ]
